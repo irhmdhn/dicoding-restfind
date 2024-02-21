@@ -1,0 +1,111 @@
+@import "./variables.scss";
+@import "./reset.scss";
+
+*:focus-visible{
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+}
+h1 {
+    font-size: $size-4xl;
+}
+h2 {
+    font-size: $size-3xl;
+}
+h3 {
+    font-size: $size-2xl;
+}
+h4 {
+    font-size: $size-xl;
+}
+h5 {
+    font-size: $size-lg;
+}
+h6,
+p {
+    font-size: $size-base;
+}
+a,button{
+    cursor: pointer;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+a{
+    color: $white;
+}
+a:hover{
+    color: $light;
+}
+
+a.link:hover{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.brand-name{
+    font-family: "Caveat", cursive !important;
+    color: $primary;
+}
+.btn{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 32px;
+    transition: 200ms;
+    &.btn-primary{
+        background-color: $primary;
+        color: $dark;
+    }
+    &.btn-primary:hover{
+        background-color: $accPrimary;
+    }
+    &.btn-outline-primary{
+        outline:1px solid $primary;
+        color: $primary;
+    }
+
+
+    &.btn.btn-glow{
+        box-shadow: 0 10px 32px rgba(251, 146, 60, 0.5);
+    }
+}
+.skip-link{
+    position: absolute;
+    top: -50px;
+    margin: 4px;
+    z-index: 99;
+    color: $white;
+    font-weight: 700;
+    border: 2px solid $white;
+    background-color: $primary;
+    padding: 8px 12px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    &:focus{
+      top: 0;
+    }
+}
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+
+// MIXIN
+@mixin flex-box($justify:start, $align:start, $direction:row, $gap:0){
+    display: flex;
+    justify-content: unquote($justify);
+    align-items: unquote($align);
+    flex-direction: unquote($direction);
+    gap: $gap;
+}
