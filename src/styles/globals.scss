@@ -1,9 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @import "./variables.scss";
 @import "./reset.scss";
+
+// MIXIN
+@mixin flex-box($justify:start, $align:start, $direction:row, $gap:0){
+    display: flex;
+    justify-content: unquote($justify);
+    align-items: unquote($align);
+    flex-direction: unquote($direction);
+    gap: $gap;
+}
+@mixin hero-img($img){
+    content: '';
+    background: url($img);
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    inset: 0;
+    scale: 1.01;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+}
 
 *:focus-visible{
     outline: 2px solid $primary;
     outline-offset: 2px;
+}
+body{
+    font-family: "Urbanist", sans-serif;
+    color: $dark;
+    background-color: $white;
 }
 h1 {
     font-size: $size-4xl;
@@ -25,6 +52,9 @@ p {
     font-size: $size-base;
 }
 a,button{
+    @include flex-box(center, center,'', 6px);
+    min-width: 44px;
+    min-height: 44px;
     cursor: pointer;
     border-radius: 12px;
     -webkit-border-radius: 12px;
@@ -33,43 +63,52 @@ a,button{
     -o-border-radius: 12px;
 }
 a{
-    color: $white;
+    color: $dark;
 }
 a:hover{
     color: $light;
 }
-
 a.link:hover{
     text-decoration: underline;
     text-underline-offset: 2px;
 }
-.brand-name{
-    font-family: "Caveat", cursive !important;
-    color: $primary;
+input{
+    padding: 13px;
+    font-size: $size-base;
+    background-color: $white;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
+
 .btn{
-    font-size: 18px;
-    font-weight: 700;
-    padding: 12px 32px;
+    font-size: 16px;
+    text-align: center;
+    padding: 8px 16px;
     transition: 200ms;
     &.btn-primary{
         background-color: $primary;
-        color: $dark;
-    }
-    &.btn-primary:hover{
-        background-color: $accPrimary;
+        color: $white;
+        &:hover, &:focus{
+            background-color: $accPrimary;
+        }
     }
     &.btn-outline-primary{
         outline:1px solid $primary;
         color: $primary;
+        &:hover, &:focus{
+            background-color: $primary;
+            color: $white;
+        }
     }
-
 
     &.btn.btn-glow{
         box-shadow: 0 10px 32px rgba(251, 146, 60, 0.5);
     }
 }
-.skip-link{
+.skip-navigation{
     position: absolute;
     top: -50px;
     margin: 4px;
@@ -99,13 +138,46 @@ a.link:hover{
     white-space: nowrap;
     border-width: 0;
 }
-
-
-// MIXIN
-@mixin flex-box($justify:start, $align:start, $direction:row, $gap:0){
-    display: flex;
-    justify-content: unquote($justify);
-    align-items: unquote($align);
-    flex-direction: unquote($direction);
-    gap: $gap;
+.brand__name{
+    @include flex-box('', center);
+    width: fit-content;
 }
+#loader {
+    position: fixed;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 99;
+    inset: 0;
+    @include flex-box('', center);
+    &::after{
+        content: '';
+        position: relative;
+        width: 12px;
+        height: 12px;
+        display: block;
+        margin: 15px auto;
+        color: $primary;
+        box-sizing: border-box;
+        animation: animloader 1s linear infinite alternate;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        -webkit-animation: animloader 1s linear infinite alternate;
+    }
+}
+@keyframes animloader {
+    0% {
+      box-shadow: -38px -6px, -14px 6px,  14px -6px;
+    }
+    33% {
+      box-shadow: -38px 6px, -14px -6px,  14px 6px;
+    }
+    66% {
+      box-shadow: -38px -6px, -14px 6px, 14px -6px;
+    }
+    100% {
+      box-shadow: -38px 6px, -14px -6px, 14px 6px;
+    }
+}
+

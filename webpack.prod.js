@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 

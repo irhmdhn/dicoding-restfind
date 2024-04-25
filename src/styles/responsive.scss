@@ -24,13 +24,13 @@
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 640px) {
     .navbar{
-        padding: 12px 64px;
         .navbar__btn{
             display:none;
         }
         .navbar__nav{
             position: static;
             width: auto;
+            height: auto;
             padding: 0;
             background: transparent;
             backdrop-filter: none;
@@ -43,8 +43,8 @@
                 display: flex;
                 flex-direction: row;
                 .navbar__nav-link{
-                    font-size: 18px;
-                    padding-block: 12px;
+                    font-size: $size-base;
+                    padding-block: 10px;
                 }
             }
         }
@@ -63,18 +63,33 @@
             }
         }
     }
-    .main-content{
+    .sect-content{
         padding: 0 0 64px 0;
     }
     .content{
-        padding: 64px;
+        padding: 64px 24px;
+        .content__resto__cards{
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
     
+    detail-restaurant{
+        .restaurant__content{
+            .restaurant__content-card{
+                padding: 32px;
+            }
+        }
+    }
 
 }
 
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 768px) {
+    .hero{
+        &::before{
+            @include hero-img('../public/images/heros/hero-medium.jpg')
+        }
+    }
     .services{
         .services__content {
             grid-template-columns: repeat(3, 1fr);
@@ -89,7 +104,7 @@
     }
     .content{
         .content__resto__cards{
-            gap: 24px;
+            gap: 12px;
         }
     }
     .card{
@@ -99,12 +114,24 @@
             }
         }
     }
-    
+    detail-restaurant{
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        .restaurant__content{
+            gap: 24px;
+            .restaurant__content-card{
+                padding: 24px;
+            }
+        }
+    }
 }
 
 /* Large devices such as laptops (1024px and up) */
 @media only screen and (min-width: 1024px) {
     .hero{
+        &::before{
+            @include hero-img('../public/images/heros/hero-large.jpg')
+        }
         .hero__content{
             .hero__title{
                 font-size: 96px;
@@ -113,13 +140,20 @@
     }
     .content{
         .content__resto__cards{
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
     }
     .card{
         .card__body{   
             .card__title{
                 font-size: $size-lg;
+            }
+        }
+    }
+    detail-restaurant{
+        .restaurant__content{
+            .restaurant__content-card{
+                padding: 32px;
             }
         }
     }
