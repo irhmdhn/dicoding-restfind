@@ -7,7 +7,7 @@ class RestoCard extends HTMLElement {
     render() {
         this.innerHTML = `
             <div class="card__img">
-                <img class="lazyload" src="https://restaurant-api.dicoding.dev/images/small/${this._resto.pictureId}" alt="${this._resto.name}">
+                <img class="lazyload" data-src="https://restaurant-api.dicoding.dev/images/small/${this._resto.pictureId}" alt="${this._resto.name}">
             </div>
             <div class="card__body">
                 <h5 class="card__title">${this._resto.name}</h5>
